@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 export default function SearchArea() {
   const [menu, setMenu] = useState(false);
   const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("Filter by Region");
 
   useEffect(() => {
     if (menu) {
@@ -13,6 +14,8 @@ export default function SearchArea() {
       document.querySelector(".sub-menu").classList.replace("grid", "hidden");
     }
   }, [menu]);
+
+  useEffect(() => {}, [region]);
 
   return (
     <div className="flex flex-col gap-12 landscape:lg:flex-row landscape:lg:justify-between">
@@ -33,22 +36,37 @@ export default function SearchArea() {
         className="relative w-1/2 landscape:lg:w-1/6 flex items-center justify-between h-12 bg-white dark:bg-dark-mode-elements px-4 shadow-md rounded-md hover:cursor-pointer"
         onClick={() => setMenu((prev) => !prev)}
       >
-        <p className="text-[#aaa]">Filter by Region</p>
+        <p className="text-[#aaa]">{region}</p>
         <img src="icon-arrow.svg" alt="" />
         <div className="absolute top-full left-0 bg-white dark:bg-dark-mode-elements w-full rounded-md p-4 mt-2 gap-2 shadow-md sub-menu hidden">
-          <p className="text-light-mode-text dark:text-white hover:cursor-pointer">
+          <p
+            className="text-light-mode-text dark:text-white hover:cursor-pointer"
+            onClick={() => setRegion("Africa")}
+          >
             Africa
           </p>
-          <p className="text-light-mode-text dark:text-white hover:cursor-pointer">
+          <p
+            className="text-light-mode-text dark:text-white hover:cursor-pointer"
+            onClick={() => setRegion("America")}
+          >
             America
           </p>
-          <p className="text-light-mode-text dark:text-white hover:cursor-pointer">
+          <p
+            className="text-light-mode-text dark:text-white hover:cursor-pointer"
+            onClick={() => setRegion("Asia")}
+          >
             Asia
           </p>
-          <p className="text-light-mode-text dark:text-white hover:cursor-pointer">
+          <p
+            className="text-light-mode-text dark:text-white hover:cursor-pointer"
+            onClick={() => setRegion("Europe")}
+          >
             Europe
           </p>
-          <p className="text-light-mode-text dark:text-white hover:cursor-pointer">
+          <p
+            className="text-light-mode-text dark:text-white hover:cursor-pointer"
+            onClick={() => setRegion("Oceania")}
+          >
             Oceania
           </p>
         </div>
