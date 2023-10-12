@@ -8,11 +8,11 @@ export default function ThemeSwitcher() {
   useEffect(() => {
     if (theme) {
       document.querySelector(".theme-class").classList.add("dark");
-
+      document.querySelector(".theme-icon").src = "icon-sun.svg";
       document.querySelector(".theme-desc").textContent = "Light Mode";
     } else {
       document.querySelector(".theme-class").classList.remove("dark");
-
+      document.querySelector(".theme-icon").src = "icon-moon.svg";
       document.querySelector(".theme-desc").textContent = "Dark Mode";
     }
   }, [theme]);
@@ -24,7 +24,7 @@ export default function ThemeSwitcher() {
         setTheme((prev) => !prev);
       }}
     >
-      {/* <i class="fa-regular fa-moon"></i> */}
+      <img src="icon-moon.svg" alt="icon" className="w-3 theme-icon" />
       <p className="font-semibold text-light-mode-text dark:text-white theme-desc">
         Dark Mode
       </p>
