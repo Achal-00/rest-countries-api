@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { dataContext } from "./Content";
 
 export default function SearchArea() {
+  const { data, setData } = useContext(dataContext);
   const [menu, setMenu] = useState(false);
-  const [country, setCountry] = useState("");
-  const [region, setRegion] = useState("Filter by Region");
 
   useEffect(() => {
     if (menu) {
@@ -14,8 +14,6 @@ export default function SearchArea() {
       document.querySelector(".sub-menu").classList.replace("grid", "hidden");
     }
   }, [menu]);
-
-  useEffect(() => {}, [region]);
 
   return (
     <div className="flex flex-col gap-12 landscape:lg:flex-row landscape:lg:justify-between">
@@ -28,7 +26,7 @@ export default function SearchArea() {
         <input
           type="text"
           placeholder="Search for a country..."
-          onChange={(e) => setCountry(e.currentTarget.value)}
+          onChange={(e) => setData({ ...data, country: e.currentTarget.value })}
           className="col-start-1 col-end-2 row-start-1 row-end-2 h-full pl-8 outline-none bg-white dark:bg-dark-mode-elements text-light-mode-text dark:text-white"
         />
       </div>
@@ -36,38 +34,44 @@ export default function SearchArea() {
         className="relative w-1/2 landscape:lg:w-1/6 flex items-center justify-between h-12 bg-white dark:bg-dark-mode-elements px-4 shadow-md rounded-md hover:cursor-pointer"
         onClick={() => setMenu((prev) => !prev)}
       >
-        <p className="text-[#aaa]">{region}</p>
+        <p className="text-[#aaa]">{data.region}</p>
         <img src="icon-arrow.svg" alt="" />
         <div className="absolute top-full left-0 bg-white dark:bg-dark-mode-elements w-full rounded-md p-4 mt-2 gap-2 shadow-md sub-menu hidden">
           <p
             className="text-light-mode-text dark:text-white hover:cursor-pointer"
-            onClick={() => setRegion("Africa")}
+            onClick={() => setData({ ...data, region: "Africa" })}
           >
             Africa
           </p>
           <p
             className="text-light-mode-text dark:text-white hover:cursor-pointer"
-            onClick={() => setRegion("America")}
+            onClick={() => setData({ ...data, region: "Americas" })}
           >
             America
           </p>
           <p
             className="text-light-mode-text dark:text-white hover:cursor-pointer"
-            onClick={() => setRegion("Asia")}
+            onClick={() => setData({ ...data, region: "Asia" })}
           >
             Asia
           </p>
           <p
             className="text-light-mode-text dark:text-white hover:cursor-pointer"
-            onClick={() => setRegion("Europe")}
+            onClick={() => setData({ ...data, region: "Europe" })}
           >
             Europe
           </p>
           <p
             className="text-light-mode-text dark:text-white hover:cursor-pointer"
-            onClick={() => setRegion("Oceania")}
+            onClick={() => setData({ ...data, region: "Oceania" })}
           >
             Oceania
+          </p>
+          <p
+            className="text-light-mode-text dark:text-white hover:cursor-pointer"
+            onClick={() => setData({ ...data, region: "Antarctic" })}
+          >
+            Antarctic
           </p>
         </div>
       </div>
