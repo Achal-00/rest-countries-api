@@ -3,7 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import Loading from "../misc/Loading";
 import { dataContext } from "./Content";
-import Card from "./card";
+import Card from "./Card";
 
 export default function ResultArea() {
   const { data } = useContext(dataContext);
