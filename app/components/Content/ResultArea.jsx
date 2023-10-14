@@ -22,7 +22,9 @@ export default function ResultArea() {
   }, []);
 
   return loading ? (
-    <Loading />
+    <div className="self-start justify-self-center">
+      <Loading />
+    </div>
   ) : (
     <div className="grid gap-12 landscape:grid-cols-2 landscape:lg:grid-cols-4">
       {country.map((item, index) => {

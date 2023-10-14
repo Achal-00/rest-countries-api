@@ -1,6 +1,19 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 export default function Card(props) {
+  const router = useRouter();
+
+  const detailedHandler = () => {
+    router.push(`/detailedview?country=${props.item.name.common}`);
+  };
+
   return (
-    <div className="w-3/4 mx-auto bg-white dark:bg-dark-mode-elements shadow-md rounded-md landscape:w-full grid">
+    <div
+      className="w-3/4 mx-auto bg-white dark:bg-dark-mode-elements shadow-md rounded-md landscape:w-full grid hover:cursor-pointer"
+      onClick={detailedHandler}
+    >
       <div className="w-full landscape:h-40">
         <img
           src={props.item.flags.png}
