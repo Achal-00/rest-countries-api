@@ -6,7 +6,7 @@ export default function Card(props) {
   const router = useRouter();
 
   const detailedHandler = () => {
-    router.push(`/detailedview?country=${props.item.name.common}`);
+    router.push(`/detailedview?country=${props.item.name.official}`);
   };
 
   return (

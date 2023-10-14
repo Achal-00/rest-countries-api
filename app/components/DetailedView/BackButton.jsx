@@ -7,7 +7,7 @@ export default function BackButton() {
 
   return (
     <button
-      className="bg-white shadow-md px-8 py-1 text-sm flex gap-2 items-center dark:bg-dark-mode-elements w-max"
+      className="bg-white shadow-md px-8 py-2 text-sm flex gap-2 items-center dark:bg-dark-mode-elements w-max"
       onClick={() => router.push("/")}
     >
       <img src="icon-arrow.svg" alt="" className="rotate-90" />
