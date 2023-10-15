@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState();
+  const [theme, setTheme] = useState(false);
 
   useEffect(() => {
-    setTheme(localStorage.getItem("rest-country-theme"));
+    if (localStorage.getItem("rest-country-theme")) {
+      setTheme(localStorage.getItem("rest-country-theme"));
+    }
   }, []);
 
   useEffect(() => {
