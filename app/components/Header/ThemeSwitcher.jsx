@@ -3,17 +3,21 @@
 import { useState, useEffect } from "react";
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("rest-country-theme")
+  );
 
   useEffect(() => {
     if (theme) {
       document.querySelector(".theme-class").classList.add("dark");
       document.querySelector(".theme-icon").src = "icon-sun.svg";
       document.querySelector(".theme-desc").textContent = "Light Mode";
+      localStorage.setItem("rest-country-theme", true);
     } else {
       document.querySelector(".theme-class").classList.remove("dark");
       document.querySelector(".theme-icon").src = "icon-moon.svg";
       document.querySelector(".theme-desc").textContent = "Dark Mode";
+      localStorage.setItem("rest-country-theme", false);
     }
   }, [theme]);
 
