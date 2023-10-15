@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 
 export default function ThemeSwitcher() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("rest-country-theme")
-  );
+  const [theme, setTheme] = useState();
+
+  useEffect(() => {
+    setTheme(localStorage.getItem("rest-country-theme"));
+  }, []);
 
   useEffect(() => {
     if (theme) {
